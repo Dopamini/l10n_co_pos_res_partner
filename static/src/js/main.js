@@ -1,4 +1,4 @@
-odoo.define('l10n_co_point_of_sale.main', function(require) {
+odoo.define('l10n_co_pos_res_partner.main', function(require) {
 "use strict";
 
 var PosDB = require('point_of_sale.DB');
@@ -29,8 +29,6 @@ models.push(
         fields: ['name', 'country_id'],
         loaded: function(self, departments) {
             self.departments = departments;
-            //alert("Hola Mundo!");
-
     },
     {
         model:  'res.country.state.city',
@@ -41,14 +39,28 @@ models.push(
     },
     {
         loaded: function(self) {
-/***
-          $.when(new Model('res.partner').call('get_doctype').then(function(doctypes){
-           self.doctypes = doctypes;
-          }));
-          $.when(new Model('res.partner').call('get_persontype',[0]).then(function(persontypes){
-            self.persontypes = persontypes;
-          }));
-***/
+
+            rpc.query({
+                        model: 'res.partner',
+                        method: 'get_persontype',
+                        args: [{
+                                'get_persontype': [0],
+                        }]
+                        }).then(function (persontypes) {
+                        console.log(persontypes);
+                        self.persontypes = persontypes;
+            });
+
+            rpc.query({
+                        model: 'res.partner',
+                        method: 'get_doctype',
+                        args: [{
+                                'get_doctype': [0],
+                        }]
+                        }).then(function (doctypes) {
+                        console.log(doctypes);
+                        self.doctypes = doctypes;
+            });
         }
     }
 );
