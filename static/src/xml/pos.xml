@@ -13,7 +13,9 @@
                     <input class='detail client-is-company' name='is_company' type='checkbox' disabled='disabled'></input>
                 </t>
             </div>
+
             <div class='client-details-left'>
+                <!--
                 <div class='client-detail'>
                     <span class='label'>Person type</span>
                     <t t-foreach='widget.pos.persontypes' t-as='persontype'>
@@ -22,6 +24,7 @@
                         </t>
                     </t>
                 </div>
+            -->
             </div>
             <div class='client-details-right'>
                 <div class='client-detail'>
@@ -32,6 +35,7 @@
                 </div>
             </div>
             <div class='client-details-left'>
+                <!--
                 <div class='client-detail'>
                     <span class='label'>Identification type</span>
                     <t t-foreach='widget.pos.doctypes' t-as='doctype'>
@@ -40,6 +44,7 @@
                         </t>
                     </t>
                 </div>
+            -->
             </div>
             <t t-if='partner.doctype == 31'>
                 <div class='client-details-right'>
@@ -83,6 +88,7 @@
         </t>
 
         <t t-jquery=".client-details-right:eq(-1)" t-operation="replace">
+            <!--
             <div class='client-detail'>
                 <span class='label'>Country</span>
                 <t t-foreach='widget.pos.countries' t-as='country'>
@@ -107,6 +113,7 @@
                     </t>
                 </t>
             </div>
+        -->
         </t>
     </t>
 
@@ -139,6 +146,7 @@
                 </t>
             </div>
             <div class='client-details-left'>
+                <!--
                 <div class='client-detail'>
                     <span class='label'>Person type</span>
                     <select class='detail client-persontype' name='personType'>
@@ -149,6 +157,7 @@
                         </t>
                     </select>
                 </div>
+            -->
             </div>
             <div class='client-details-right' style="visibility:hidden">
                 <div class='client-detail'>
@@ -162,6 +171,7 @@
                 </div>
             </div>
             <div class='client-details-left'>
+                <!--
                 <div class='client-detail'>
                     <span class='label'>Identification type</span>
                     <select class='detail client-doctype' name='doctype'>
@@ -172,6 +182,7 @@
                         </t>
                     </select>
                 </div>
+            -->
             </div>
             <div class='client-details-right formated-nit'>
                 <div class='client-detail'>
@@ -206,6 +217,7 @@
         </t>
 
         <t t-jquery=".client-details-right div:eq(-2)" t-operation="replace">
+    
             <div class='client-detail'>
                 <span class='label'>Department</span>
                 <select class='detail client-address-state' name='state_id'>
@@ -228,6 +240,7 @@
                     </t>
                 </select>
             </div>
+    
         </t>
         <t t-jquery=".client-details-right div:eq(-1)" t-operation="replace">
         </t>

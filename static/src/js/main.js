@@ -4,7 +4,8 @@ odoo.define('l10n_co_point_of_sale.main', function(require) {
 var PosDB = require('point_of_sale.DB');
 var core = require('web.core');
 var module = require('point_of_sale.models');
-var Model = require('web.DataModel');
+//var Model = require('web.DataModel');
+var rpc = require('web.rpc');
 var gui = require('point_of_sale.gui');
 var screens = require('point_of_sale.screens');
 var _t = core._t;
@@ -28,7 +29,8 @@ models.push(
         fields: ['name', 'country_id'],
         loaded: function(self, departments) {
             self.departments = departments;
-        }
+            //alert("Hola Mundo!");
+
     },
     {
         model:  'res.country.state.city',
@@ -39,13 +41,14 @@ models.push(
     },
     {
         loaded: function(self) {
-
+/***
           $.when(new Model('res.partner').call('get_doctype').then(function(doctypes){
            self.doctypes = doctypes;
           }));
           $.when(new Model('res.partner').call('get_persontype',[0]).then(function(persontypes){
             self.persontypes = persontypes;
           }));
+***/
         }
     }
 );
@@ -407,7 +410,7 @@ screens.ClientListScreenWidget.include({
         fields.country_id   = fields.country_id || false;
         fields.barcode      = fields.barcode || '';
 
-
+/***
         new Model('res.partner').call('create_from_ui',[fields]).then(function(partner_id){
             console.log('createui ssssssssssssssssssssssssss');
             self.saved_client_details(partner_id);
@@ -430,7 +433,7 @@ screens.ClientListScreenWidget.include({
                 });
             }
         });
-
+**/
 
         $(".client-identification-number").addClass("detail");
         $(".client-is-company").addClass("detail");
