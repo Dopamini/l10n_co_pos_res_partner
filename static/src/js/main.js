@@ -5,10 +5,10 @@ var PosDB = require('point_of_sale.DB');
 var core = require('web.core');
 var module = require('point_of_sale.models');
 //var Model = require('web.DataModel');
-var rpc = require('web.rpc');
 var gui = require('point_of_sale.gui');
 var screens = require('point_of_sale.screens');
 var _t = core._t;
+var rpc = require('web.rpc');
 
 var models = module.PosModel.prototype.models;
 var partner_fields = ['x_name1',
@@ -23,24 +23,27 @@ var partner_fields = ['x_name1',
                       'xcity',
                       'state_id'];
 
+
 models.push(
     {
         model:  'res.country.state',
         fields: ['name', 'country_id'],
         loaded: function(self, departments) {
+          //  console.log(departments);
             self.departments = departments;
+        }
     },
     {
         model:  'res.country.state.city',
         fields: ['name', 'state_id'],
         loaded: function(self, cities) {
+        //console.log(cities);
             self.cities = cities;
         }
     },
     {
         loaded: function(self) {
-
-            rpc.query({
+           rpc.query({
                         model: 'res.partner',
                         method: 'get_persontype',
                         args: [{
@@ -61,6 +64,8 @@ models.push(
                         console.log(doctypes);
                         self.doctypes = doctypes;
             });
+
+
         }
     }
 );
@@ -221,7 +226,7 @@ screens.ClientListScreenWidget.include({
         var state_select = $('.client-address-state');
         var city_select = $('.client-address-city');
 
-        country_select.val("50")
+        country_select.val("49")
         country_select.change(function(event) {
             $.each(state_select.find('option'), function() {
                 if($(this).attr("country_id") !== country_select.val())
@@ -424,10 +429,10 @@ screens.ClientListScreenWidget.include({
 
 
         rpc.query({
-                    model: 'res.partner',
-                    method: 'create_from_ui',
-                    args: [fields] 
-                 }).then(function(partner_id){
+                        model: 'res.partner',
+                        method: 'create_from_ui',
+                        args: [fields]
+                        }).then(function(partner_id){
             console.log('createui ssssssssssssssssssssssssss');
             self.saved_client_details(partner_id);
         },function(err,event){
@@ -449,10 +454,6 @@ screens.ClientListScreenWidget.include({
                 });
             }
         });
-
-
-
-
 
 
         $(".client-identification-number").addClass("detail");

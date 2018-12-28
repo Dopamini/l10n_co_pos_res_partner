@@ -18,11 +18,7 @@ Colombia Point of Sale:
     ],
     'data': [
         'views/pos_view.xml',
-        #'views/point_of_sale_view.xml',
-        #'report/report_sessionsummary.xml',
-        #'security/ir.model.access.csv',
-        #'views/report_receipt.xml',
-        #'views/view_report_pos_order.xml'
+
     ],
     'qweb': ['static/src/xml/*.xml'],
     'installable': True,

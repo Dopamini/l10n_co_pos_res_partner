@@ -13,18 +13,17 @@
                     <input class='detail client-is-company' name='is_company' type='checkbox' disabled='disabled'></input>
                 </t>
             </div>
-
             <div class='client-details-left'>
-            
                 <div class='client-detail'>
                     <span class='label'>Person type</span>
+
                     <t t-foreach='widget.pos.persontypes' t-as='persontype'>
                         <t t-if='persontype.id === partner.personType'>
                             <span class='detail client-person-type'><t t-esc='persontype.name' /></span>
                         </t>
                     </t>
+
                 </div>
-          
             </div>
             <div class='client-details-right'>
                 <div class='client-detail'>
@@ -35,16 +34,16 @@
                 </div>
             </div>
             <div class='client-details-left'>
-           
                 <div class='client-detail'>
                     <span class='label'>Identification type</span>
+
                     <t t-foreach='widget.pos.doctypes' t-as='doctype'>
                         <t t-if='doctype.id === partner.doctype'>
                             <span class='detail client-identification-type'><t t-esc='doctype.name' /></span>
                         </t>
                     </t>
+
                 </div>
-     
             </div>
             <t t-if='partner.doctype == 31'>
                 <div class='client-details-right'>
@@ -88,7 +87,6 @@
         </t>
 
         <t t-jquery=".client-details-right:eq(-1)" t-operation="replace">
-           
             <div class='client-detail'>
                 <span class='label'>Country</span>
                 <t t-foreach='widget.pos.countries' t-as='country'>
@@ -99,11 +97,13 @@
             </div>
             <div class='client-detail'>
                 <span class='label'>Department</span>
+
                 <t t-foreach='widget.pos.departments' t-as='department'>
                     <t t-if='department.id === partner.state_id[0]'>
                     <span class='detail client-address-department'><t t-esc='department.name' /></span>
                     </t>
                 </t>
+
             </div>
             <div class='client-detail'>
                 <span class='label'>City</span>
@@ -113,7 +113,6 @@
                     </t>
                 </t>
             </div>
-      
         </t>
     </t>
 
@@ -146,18 +145,18 @@
                 </t>
             </div>
             <div class='client-details-left'>
-             
                 <div class='client-detail'>
                     <span class='label'>Person type</span>
                     <select class='detail client-persontype' name='personType'>
+
                         <t t-foreach='widget.pos.persontypes' t-as='persontype'>
                             <option t-att-value='persontype.id' t-att-selected="partner.personType ? ((persontype.id === partner.personType) ? true : undefined) : undefined">
                                 <t t-esc='persontype.name'/>
                             </option>
                         </t>
+
                     </select>
                 </div>
-          
             </div>
             <div class='client-details-right' style="visibility:hidden">
                 <div class='client-detail'>
@@ -171,18 +170,18 @@
                 </div>
             </div>
             <div class='client-details-left'>
-              
                 <div class='client-detail'>
                     <span class='label'>Identification type</span>
                     <select class='detail client-doctype' name='doctype'>
+
                         <t t-foreach='widget.pos.doctypes' t-as='doctype'>
                             <option t-att-value='doctype.id' t-att-selected="partner.doctype ? ((doctype.id === partner.doctype) ? true : undefined) : undefined">
                                 <t t-esc='doctype.name'/>
                             </option>
                         </t>
+
                     </select>
                 </div>
-         
             </div>
             <div class='client-details-right formated-nit'>
                 <div class='client-detail'>
@@ -217,7 +216,6 @@
         </t>
 
         <t t-jquery=".client-details-right div:eq(-2)" t-operation="replace">
-    
             <div class='client-detail'>
                 <span class='label'>Department</span>
                 <select class='detail client-address-state' name='state_id'>
@@ -240,7 +238,6 @@
                     </t>
                 </select>
             </div>
-    
         </t>
         <t t-jquery=".client-details-right div:eq(-1)" t-operation="replace">
         </t>
