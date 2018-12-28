@@ -422,8 +422,12 @@ screens.ClientListScreenWidget.include({
         fields.country_id   = fields.country_id || false;
         fields.barcode      = fields.barcode || '';
 
-/***
-        new Model('res.partner').call('create_from_ui',[fields]).then(function(partner_id){
+
+        rpc.query({
+                    model: 'res.partner',
+                    method: 'create_from_ui',
+                    args: [fields] 
+                 }).then(function(partner_id){
             console.log('createui ssssssssssssssssssssssssss');
             self.saved_client_details(partner_id);
         },function(err,event){
@@ -445,7 +449,11 @@ screens.ClientListScreenWidget.include({
                 });
             }
         });
-**/
+
+
+
+
+
 
         $(".client-identification-number").addClass("detail");
         $(".client-is-company").addClass("detail");
